@@ -136,13 +136,16 @@ console.log(resumenPersonajes(personajesGot));
 //punto 1 DOM
 const claseDummy = document.querySelector(".personaje-dummy")
 
+
 for (personaje of personajesGot) {
   const personajeDummy = claseDummy.cloneNode();
   const imgDummy = document.createElement("img");
-  imgDummy.src =
-   /* document.createElement(".nombre") = `${personaje.nombre} ${personaje.familia}`;
-  document.createElement(".edad") = personaje.edad;
-  document.createElement(".años-de-reinado") = personaje
+  imgDummy.src =;
+  document.querySelector(".nombre").textContent = `${personaje.nombre} ${personaje.familia}`;
+  document.querySelector(".edad-x").textContent = personaje.edad;
+  document.querySelector(".año-reinado").textContent = personaje.añosReinando;
+  /*
+
 */
 
 
