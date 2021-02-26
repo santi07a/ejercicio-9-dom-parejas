@@ -79,7 +79,7 @@ class Escudero extends Personajes {
     this.nombre = nombre;
     this.familia = familia;
     this.edad = edad;
-    this.sirveAlPersonaje(personajeAlQueSirve);
+    this.sirveAlPersonaje = personajeAlQueSirve;
   }
   set verificarPersonaje(personajeIndefinido) {
     this.sirveAlPersonaje(personajeIndefinido);
@@ -88,22 +88,22 @@ class Escudero extends Personajes {
     if (personaje instanceof Luchador) {
       this.personajeQueSirve = personaje;
     }
-
-    set gradoPelotismo(gradoAVerificar) {
-      this.pelotismo(gradoAVerificar);
-    }
-    pelotismo(grado) {
-      if (grado < 0) {
-        this.grado = 1
-      } else if (grado > 10) {
-        this.grado = 10
-      }
-    };
-    comunicar() {
-      super.comunicar();
-      return "Soy un Loser";
+  }
+  set gradoPelotismo(gradoAVerificar) {
+    this.pelotismo(gradoAVerificar);
+  }
+  pelotismo(grado) {
+    if (grado < 0) {
+      this.grado = 1
+    } else if (grado > 10) {
+      this.grado = 10
     }
   };
+  comunicar() {
+    super.comunicar();
+    return "Soy un Loser";
+  }
+};
 
 //punto 2
 let joffrey = new Rey('Joffrey', 'Baratheon', 20, 2)
@@ -164,10 +164,14 @@ const claseDummy = document.querySelector(".personaje-dummy")
 for (personaje of personajesGot) {
   const personajeDummy = claseDummy.cloneNode();
   const imgDummy = document.createElement("img");
-  imgDummy.src =;
   document.querySelector(".nombre").textContent = `${personaje.nombre} ${personaje.familia}`;
   document.querySelector(".edad-x").textContent = personaje.edad;
   document.querySelector(".anyo-reinado").textContent = personaje.anyosReinando;
+  document.querySelector(".arma-XXX").textContent = personaje.armaQueUtiliza;
+  document.querySelector(".destreza-x").textContent = personaje.potencia;
+  //document.querySelector(".peloteo-x").textContent = personaje.grado;
+  document.querySelector(".asesora-x").textContent = personaje.asesoraA;
+  document.querySelector(".sirve-x").textContent = personaje.personajeAlQueSirve;
 }
 claseDummy.remove();
 
