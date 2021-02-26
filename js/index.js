@@ -12,12 +12,13 @@ class Personajes {
 }
 
 class Rey extends Personajes {
-  constructor(nombre, familia, edad, añosReinando) {
+  anyosReinando;
+  constructor(nombre, familia, edad, anyosDeReinado) {
     super();
     this.nombre = nombre;
     this.familia = familia;
     this.edad = edad;
-    this.añosReinando = añosReinando;
+    this.anyosReinando = anyosDeReinado;
 
 
   }
@@ -27,32 +28,42 @@ class Rey extends Personajes {
   }
 }
 class Luchador extends Personajes {
-  constructor(nombre, familia, edad, arma) {
+  arma;
+  destreza;
+  constructor(nombre, familia, edad, armaQueUtiliza, potencia) {
     super();
     this.nombre = nombre;
     this.familia = familia;
     this.edad = edad;
-    this.arma = arma;
+    this.arma = armaQueUtiliza;
+    this.cantidadDestreza(potencia);
   }
   comunicar() {
     super.comunicar();
     return "Primero pego y luego pregunto";
   }
-  destreza(potencia) {
-    if (potencia < 0) {
-      this.potencia = 1
-    } else if (potencia < 10) {
-      this.potencia = 10
+  set totalDestreza(potencia) {
+    this.cantidadDestreza(potencia);
+  }
+
+  cantidadDestreza(potenciaVerificar) {
+    if (potenciaVerificar > 0 && potenciaVerificar <= 10) {
+      this.destreza = potenciaVerificar;
+    } else if (potenciaVerificar < 0) {
+      this.destreza = 0;
+    } else if (potenciaVerificar > 10) {
+      this.destreza = 10;
     }
   }
 }
 class Asesor extends Personajes {
-  constructor(nombre, familia, edad, personajeQueAsesora) {
+  personajeQueAsesora;
+  constructor(nombre, familia, edad, asesoraA) {
     super();
     this.nombre = nombre;
     this.familia = familia;
     this.edad = edad;
-    this.personajeQueAsesora = personajeQueAsesora;
+    this.personajeQueAsesora = asesoraA;
   }
   comunicar() {
     super.comunicar();
@@ -61,39 +72,52 @@ class Asesor extends Personajes {
 }
 
 class Escudero extends Personajes {
-  constructor(nombre, familia, edad, sirveAlPersonaje) {
+  sirveAlPersonaje;
+  pelotismo;
+  constructor(nombre, familia, edad, personajeAlQueSirve) {
     super();
     this.nombre = nombre;
     this.familia = familia;
     this.edad = edad;
-    this.sirveAlPersonaje = sirveAlPersonaje;
+    this.sirveAlPersonaje(personajeAlQueSirve);
   }
-  pelotismo(grado) {
-    if (grado < 0) {
-      this.grado = 1
-    } else if (grado > 10) {
-      this.grado = 10
+  set verificarPersonaje(personajeIndefinido) {
+    this.sirveAlPersonaje(personajeIndefinido);
+  }
+  sirveAlPersonaje(personaje) {
+    if (personaje instanceof Luchador) {
+      this.personajeQueSirve = personaje;
     }
-  }
-  comunicar() {
-    super.comunicar();
-    return "Soy un Loser";
-  }
-}
+
+    set gradoPelotismo(gradoAVerificar) {
+      this.pelotismo(gradoAVerificar);
+    }
+    pelotismo(grado) {
+      if (grado < 0) {
+        this.grado = 1
+      } else if (grado > 10) {
+        this.grado = 10
+      }
+    };
+    comunicar() {
+      super.comunicar();
+      return "Soy un Loser";
+    }
+  };
 
 //punto 2
-const joffrey = new Rey('Joffrey', 'Baratheon', 20, 2)
+let joffrey = new Rey('Joffrey', 'Baratheon', 20, 2)
 
-const jamie = new Luchador('Jamie', 'Lannister', 40, 'Espada');
+let jamie = new Luchador('Jamie', 'Lannister', 40, 'Espada');
 
-const danaerys = new Luchador('Daenerys', 'Targaryen', 30, 'Dragones');
+let danaerys = new Luchador('Daenerys', 'Targaryen', 30, 'Dragones');
 
-const tyrion = new Asesor('Tyrion', 'Lannister', 38, 'Daenerys');
+let tyrion = new Asesor('Tyrion', 'Lannister', 38, 'Daenerys');
 
-const bronn = new Escudero('Bronn', 'Aguasnegras', 50, 'Jamie');
+let bronn = new Escudero('Bronn', 'Aguasnegras', 50, 'Jamie');
 
 //punto 3
-const personajesGot = [joffrey, jamie, danaerys, tyrion, bronn];
+let personajesGot = [joffrey, jamie, danaerys, tyrion, bronn];
 
 //punto 4
 
@@ -143,12 +167,7 @@ for (personaje of personajesGot) {
   imgDummy.src =;
   document.querySelector(".nombre").textContent = `${personaje.nombre} ${personaje.familia}`;
   document.querySelector(".edad-x").textContent = personaje.edad;
-  document.querySelector(".año-reinado").textContent = personaje.añosReinando;
-  /*
-
-*/
-
-
+  document.querySelector(".anyo-reinado").textContent = personaje.anyosReinando;
 }
 claseDummy.remove();
 
