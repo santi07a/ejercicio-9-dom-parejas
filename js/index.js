@@ -136,26 +136,31 @@ jamie.morir();
 tyrion.morir();
 
 //punto 8
-/*
-const resumenPersonajes = personas => personas
-  .map(personas => personas.constructor)
-  .filter((persona, i, personas) => personas
-    .indexOf(persona) === i);
 
-console.log(resumenPersonajes(personajesGot));
+function resumir() {
+  const resumenGeneral = personajesGot
+    .map(personaje => personaje.constructor.name)
+    .filter((nombre, i, nombres) => nombres.indexOf(nombre) === i)
+    .map(tipo => ({
+      tipo,
+      personajes: []
+    }));
 
+  const resumenPersonajes = personajesGot.map(personaje => ({
+    nombre: personaje.nombre + " " + personaje.familia,
+    estado: personaje.estado,
+    edad: personaje.edad
+  }))
 
-  .filter((persona, i, personas) => personas.indexOf(persona) === i)
-    .sort((a, b) => a.edad - b.edad);
-.push({
-    tipo: personas.constructor.name,
-    personajes:
-    {
-      nombre: (`${personas.nombre} ${personas.familia}`),
-      estado: personas.estado,
-      edad: personas.edad,
+  for (a in resumenGeneral) {
+    for (i in resumenPersonajes) {
+      if (personajesGot[i].constructor.name === resumenGeneral[a].tipo) {
+        resumenGeneral[a].personajes.push(resumenPersonajes[i]);
+      }
     }
-*/
+  }
+  return resumenGeneral;
+}
 
 //punto 1 DOM
 const claseDummy = document.querySelector(".personaje-dummy")
