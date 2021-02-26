@@ -74,12 +74,14 @@ class Asesor extends Personajes {
 class Escudero extends Personajes {
   sirveAlPersonaje;
   pelotismo;
-  constructor(nombre, familia, edad, personajeAlQueSirve) {
+  gradoPelotismo;
+  constructor(nombre, familia, edad, personajeAlQueSirve, grado) {
     super();
     this.nombre = nombre;
     this.familia = familia;
     this.edad = edad;
     this.sirveAlPersonaje = personajeAlQueSirve;
+    this.gradoPelotismo = this.pelotismo;
   }
   set verificarPersonaje(personajeIndefinido) {
     this.sirveAlPersonaje(personajeIndefinido);
@@ -169,9 +171,15 @@ for (personaje of personajesGot) {
   document.querySelector(".anyo-reinado").textContent = personaje.anyosReinando;
   document.querySelector(".arma-XXX").textContent = personaje.armaQueUtiliza;
   document.querySelector(".destreza-x").textContent = personaje.potencia;
-  //document.querySelector(".peloteo-x").textContent = personaje.grado;
+  document.querySelector(".peloteo-X").textContent = personaje.grado;
   document.querySelector(".asesora-x").textContent = personaje.asesoraA;
   document.querySelector(".sirve-x").textContent = personaje.personajeAlQueSirve;
+  if (personaje.constructor.name.toLowerCase() === 'rey') {
+    return document.querySelector(".emoji").textContent = "👑";
+  } else if (personaje.constructor.name.toLowerCase() === 'luchador') {
+    return document.querySelector(".emoji").textContent = '🗡';
+  } else if (personaje.constructor.name.toLowerCase() === 'asesor')
+
 }
 claseDummy.remove();
 
