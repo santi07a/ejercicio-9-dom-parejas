@@ -12,11 +12,14 @@ class Personajes {
 }
 
 class Rey extends Personajes {
-  constructor(nombre, familia, edad) {
+  constructor(nombre, familia, edad, añosReinando) {
     super();
     this.nombre = nombre;
     this.familia = familia;
     this.edad = edad;
+    this.añosReinando = añosReinando;
+
+
   }
   comunicar() {
     super.comunicar();
@@ -24,11 +27,12 @@ class Rey extends Personajes {
   }
 }
 class Luchador extends Personajes {
-  constructor(nombre, familia, edad) {
+  constructor(nombre, familia, edad, arma) {
     super();
     this.nombre = nombre;
     this.familia = familia;
     this.edad = edad;
+    this.arma = arma;
   }
   comunicar() {
     super.comunicar();
@@ -43,11 +47,12 @@ class Luchador extends Personajes {
   }
 }
 class Asesor extends Personajes {
-  constructor(nombre, familia, edad) {
+  constructor(nombre, familia, edad, personajeQueAsesora) {
     super();
     this.nombre = nombre;
     this.familia = familia;
     this.edad = edad;
+    this.personajeQueAsesora = personajeQueAsesora;
   }
   comunicar() {
     super.comunicar();
@@ -56,11 +61,12 @@ class Asesor extends Personajes {
 }
 
 class Escudero extends Personajes {
-  constructor(nombre, familia, edad) {
+  constructor(nombre, familia, edad, sirveAlPersonaje) {
     super();
     this.nombre = nombre;
     this.familia = familia;
     this.edad = edad;
+    this.sirveAlPersonaje = sirveAlPersonaje;
   }
   pelotismo(grado) {
     if (grado < 0) {
@@ -76,15 +82,15 @@ class Escudero extends Personajes {
 }
 
 //punto 2
-const joffrey = new Rey('Joffrey', 'Baratheon', 20)
+const joffrey = new Rey('Joffrey', 'Baratheon', 20, 2)
 
-const jamie = new Luchador('Jamie', 'Lannister', 40);
+const jamie = new Luchador('Jamie', 'Lannister', 40, 'Espada');
 
-const danaerys = new Luchador('Daenerys', 'Targaryen', 30);
+const danaerys = new Luchador('Daenerys', 'Targaryen', 30, 'Dragones');
 
-const tyrion = new Asesor('Tyrion', 'Lannister', 38);
+const tyrion = new Asesor('Tyrion', 'Lannister', 38, 'Daenerys');
 
-const bronn = new Escudero('Bronn', 'Aguasnegras', 50);
+const bronn = new Escudero('Bronn', 'Aguasnegras', 50, 'Jamie');
 
 //punto 3
 const personajesGot = [joffrey, jamie, danaerys, tyrion, bronn];
@@ -129,9 +135,17 @@ console.log(resumenPersonajes(personajesGot));
 
 //punto 1 DOM
 const claseDummy = document.querySelector(".personaje-dummy")
-const funcionArray = function (personajes) {
-  for (personaje of personajes) {
-    const personajeDummy = claseDummy.cloneNode();
-    claseDummy.remove();
-  }
-};
+
+for (personaje of personajesGot) {
+  const personajeDummy = claseDummy.cloneNode();
+  const imgDummy = document.createElement("img");
+  imgDummy.src =
+   /* document.createElement(".nombre") = `${personaje.nombre} ${personaje.familia}`;
+  document.createElement(".edad") = personaje.edad;
+  document.createElement(".años-de-reinado") = personaje
+*/
+
+
+}
+claseDummy.remove();
+
