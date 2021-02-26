@@ -138,26 +138,8 @@ jamie.morir();
 tyrion.morir();
 
 //punto 8
-/*
-const resumenPersonajes = personas => personas
-  .map(personas => personas.constructor)
-  .filter((persona, i, personas) => personas
-    .indexOf(persona) === i);
-
-console.log(resumenPersonajes(personajesGot));
 
 
-  .filter((persona, i, personas) => personas.indexOf(persona) === i)
-    .sort((a, b) => a.edad - b.edad);
-.push({
-    tipo: personas.constructor.name,
-    personajes:
-    {
-      nombre: (`${personas.nombre} ${personas.familia}`),
-      estado: personas.estado,
-      edad: personas.edad,
-    }
-*/
 
 //punto 1 DOM
 const claseDummy = document.querySelector(".personaje-dummy")
@@ -175,11 +157,13 @@ for (personaje of personajesGot) {
   document.querySelector(".asesora-x").textContent = personaje.asesoraA;
   document.querySelector(".sirve-x").textContent = personaje.personajeAlQueSirve;
   if (personaje.constructor.name.toLowerCase() === 'rey') {
-    return document.querySelector(".emoji").textContent = "👑";
+    document.querySelector(".emoji").textContent = '👑';
   } else if (personaje.constructor.name.toLowerCase() === 'luchador') {
-    return document.querySelector(".emoji").textContent = '🗡';
-  } else if (personaje.constructor.name.toLowerCase() === 'asesor')
-
-}
+    document.querySelector(".emoji").textContent = '🗡';
+  } else if (personaje.constructor.name.toLowerCase() === 'asesor') {
+    document.querySelector(".emoji").textContent = '🎓';
+  } else (personaje.constructor.name.toLowerCase() === 'escudero');
+  document.querySelector(".emoji").textContent = '🛡';
+};
 claseDummy.remove();
 
