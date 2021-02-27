@@ -195,11 +195,11 @@ function DOM() {
     document.querySelector(".nombre").textContent = `${personaje.nombre} ${personaje.familia}`;
     document.querySelector(".edad-x").textContent = personaje.edad;
     document.querySelector(".anyo-reinado").textContent = personaje.anyosReinando;
-    document.querySelector(".arma-XXX").textContent = personaje.armaQueUtiliza;
-    document.querySelector(".destreza-x").textContent = personaje.potencia;
-    document.querySelector(".peloteo-X").textContent = personaje.grado;
-    document.querySelector(".asesora-x").textContent = personaje.asesoraA;
-    document.querySelector(".sirve-x").textContent = personaje.personajeAlQueSirve;
+    document.querySelector(".arma").textContent = personaje.armaQueUtiliza;
+    document.querySelector(".destreza").textContent = personaje.potencia;
+    document.querySelector(".peloteo").textContent = personaje.grado;
+    document.querySelector(".asesora").textContent = personaje.asesoraA;
+    document.querySelector(".sirve").textContent = personaje.personajeAlQueSirve;
     if (personaje.constructor.name.toLowerCase() === 'rey') {
       document.querySelector(".emoji").textContent = '👑';
     } else if (personaje.constructor.name.toLowerCase() === 'luchador') {
@@ -215,8 +215,8 @@ function DOM() {
     }
     setTimeout(() => {
       document.querySelector(".personajes").append(personajeDummy);
-    }, 1000);
-  };
+    }, 1000)
+  }
 }
 
 DOM();
