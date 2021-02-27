@@ -213,5 +213,36 @@ function DOM() {
     } else if (personaje.estado === 'vivo') {
       document.querySelector(".icono-estado").firstChild.remove();
     }
-  };
-}
+    if (personaje instanceof Rey) {
+      document.querySelector(".metadata .li-asesor").remove();
+      document.querySelector(".metadata .li-arma").remove();
+      document.querySelector(".metadata .li-peloteo").remove();
+      document.querySelector(".metadata .li-sirve").remove();
+      document.querySelector(".metadata .li-destreza").remove();
+    } else if (personaje instanceof Luchador) {
+      document.querySelector(".metadata .li-asesor").remove();
+      document.querySelector(".metadata .li-anyos").remove();
+      document.querySelector(".metadata .li-peloteo").remove();
+      document.querySelector(".metadata .li-sirve").remove();
+    } else if (personaje instanceof Asesor) {
+      document.querySelector(".metadata .li-destreza").remove();
+      document.querySelector(".metadata .li-anyos").remove();
+      document.querySelector(".metadata .li-peloteo").remove();
+      document.querySelector(".metadata .li-sirve").remove();
+      document.querySelector(".metadata .li-arma").remove();
+      document.querySelector(".metadata .li-anyos").remove();
+    }
+    else if (personaje instanceof Escudero) {
+      document.querySelector(".metadata .li-asesor").remove();
+      document.querySelector(".metadata .li-arma").remove();
+      document.querySelector(".metadata .li-peloteo").remove();
+      document.querySelector(".metadata .li-anyos").remove();
+      document.querySelector(".metadata .li-destreza").remove();
+    }
+
+    /*('li-asesora', 'li-arma', 'li-peloteo', 'li-destreza', 'li-sirve')
+*/
+  }
+};
+
+
