@@ -167,7 +167,8 @@ function resumir() {
 }
 console.log(resumir());
 //punto 1 DOM
-const claseDummy = document.querySelector(".personaje-dummy")
+const claseDummy = document.querySelector(".personaje-dummy");
+const iconoVivoMuerto = document.querySelector(".icono-estado");
 
 
 for (personaje of personajesGot) {
@@ -189,6 +190,10 @@ for (personaje of personajesGot) {
     document.querySelector(".emoji").textContent = '🎓';
   } else (personaje.constructor.name.toLowerCase() === 'escudero');
   document.querySelector(".emoji").textContent = '🛡';
+  if (personaje.estado === 'Muerto') {
+    iconoVivoMuerto.remove();
+  };
+
 };
 claseDummy.remove();
 
