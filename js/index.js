@@ -165,35 +165,49 @@ function resumir() {
   }
   return resumenGeneral;
 }
-console.log(resumir());
+
 //punto 1 DOM
-const claseDummy = document.querySelector(".personaje-dummy");
 const iconoVivoMuerto = document.querySelector(".icono-estado");
 
+function DOM() {
+  for (personaje of personajesGot) {
+    const personajeDummy = document.querySelector(".personaje-dummy").cloneNode(true);
+    personajeDummy.classList.remove("personaje-dummy");
+    const imagenes = document.querySelectorAll("img");
+    if (personaje.nombre.toLowerCase() === "bronn") {
+      imagenes.src = "img/bronn.jpg";
+    } else if (personaje.nombre.toLowerCase() === "daenerys") {
+      imagenes.src = "img/daenerys.jpg";
+    } else if (personaje.nombre.toLowerCase() === "jamie") {
+      imagenes.src = "img/jamie.jpg";
+    } else if (personaje.nombre.toLowerCase() === "tyrion") {
+      imagenes.src = "img/tyrion.jpg";
+    } else if (personaje.nombre.toLowerCase() === "joffrey") {
+      imagenes.src = "img/joffrey.jpg";
+    } else {
+      imagenes.src = "img/no-one.jpg";
+    }
+    document.querySelector(".nombre").textContent = `${personaje.nombre} ${personaje.familia}`;
+    document.querySelector(".edad-x").textContent = personaje.edad;
+    document.querySelector(".anyo-reinado").textContent = personaje.anyosReinando;
+    document.querySelector(".arma-XXX").textContent = personaje.armaQueUtiliza;
+    document.querySelector(".destreza-x").textContent = personaje.potencia;
+    document.querySelector(".peloteo-X").textContent = personaje.grado;
+    document.querySelector(".asesora-x").textContent = personaje.asesoraA;
+    document.querySelector(".sirve-x").textContent = personaje.personajeAlQueSirve;
+    if (personaje.constructor.name.toLowerCase() === 'rey') {
+      document.querySelector(".emoji").textContent = '👑';
+    } else if (personaje.constructor.name.toLowerCase() === 'luchador') {
+      document.querySelector(".emoji").textContent = '🗡';
+    } else if (personaje.constructor.name.toLowerCase() === 'asesor') {
+      document.querySelector(".emoji").textContent = '🎓';
+    } else (personaje.constructor.name.toLowerCase() === 'escudero');
+    document.querySelector(".emoji").textContent = '🛡';
+    if (personaje.estado === 'Muerto') {
+      iconoVivoMuerto.remove();
+    };
 
-for (personaje of personajesGot) {
-  const personajeDummy = claseDummy.cloneNode();
-  const imgDummy = document.createElement("img");
-  document.querySelector(".nombre").textContent = `${personaje.nombre} ${personaje.familia}`;
-  document.querySelector(".edad-x").textContent = personaje.edad;
-  document.querySelector(".anyo-reinado").textContent = personaje.anyosReinando;
-  document.querySelector(".arma-XXX").textContent = personaje.armaQueUtiliza;
-  document.querySelector(".destreza-x").textContent = personaje.potencia;
-  document.querySelector(".peloteo-X").textContent = personaje.grado;
-  document.querySelector(".asesora-x").textContent = personaje.asesoraA;
-  document.querySelector(".sirve-x").textContent = personaje.personajeAlQueSirve;
-  if (personaje.constructor.name.toLowerCase() === 'rey') {
-    document.querySelector(".emoji").textContent = '👑';
-  } else if (personaje.constructor.name.toLowerCase() === 'luchador') {
-    document.querySelector(".emoji").textContent = '🗡';
-  } else if (personaje.constructor.name.toLowerCase() === 'asesor') {
-    document.querySelector(".emoji").textContent = '🎓';
-  } else (personaje.constructor.name.toLowerCase() === 'escudero');
-  document.querySelector(".emoji").textContent = '🛡';
-  if (personaje.estado === 'Muerto') {
-    iconoVivoMuerto.remove();
   };
+}
 
-};
-claseDummy.remove();
-
+DOM();
