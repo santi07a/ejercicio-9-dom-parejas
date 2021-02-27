@@ -167,13 +167,12 @@ function resumir() {
 }
 
 //punto 1 DOM
-/* const claseDummy = document.querySelector(".personaje-dummy"); */
 const iconoVivoMuerto = document.querySelector(".icono-estado");
 
 function DOM() {
   for (personaje of personajesGot) {
     const personajeDummy = document.querySelector(".personaje-dummy").cloneNode(true);
-    console.log(personajeDummy);
+    personajeDummy.classList.remove("personaje-dummy");
     const imgDummy = document.createElement("img");
     document.querySelector(".nombre").textContent = `${personaje.nombre} ${personaje.familia}`;
     document.querySelector(".edad-x").textContent = personaje.edad;
@@ -196,5 +195,6 @@ function DOM() {
     };
 
   };
-  claseDummy.remove();
 }
+
+DOM();
