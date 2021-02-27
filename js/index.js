@@ -173,7 +173,20 @@ function DOM() {
   for (personaje of personajesGot) {
     const personajeDummy = document.querySelector(".personaje-dummy").cloneNode(true);
     personajeDummy.classList.remove("personaje-dummy");
-    const imgDummy = document.createElement("img");
+    const imagenes = document.querySelectorAll("img");
+    if (personaje.nombre.toLowerCase() === "bronn") {
+      imagenes.src = "img/bronn.jpg";
+    } else if (personaje.nombre.toLowerCase() === "daenerys") {
+      imagenes.src = "img/daenerys.jpg";
+    } else if (personaje.nombre.toLowerCase() === "jamie") {
+      imagenes.src = "img/jamie.jpg";
+    } else if (personaje.nombre.toLowerCase() === "tyrion") {
+      imagenes.src = "img/tyrion.jpg";
+    } else if (personaje.nombre.toLowerCase() === "joffrey") {
+      imagenes.src = "img/joffrey.jpg";
+    } else {
+      imagenes.src = "img/no-one.jpg";
+    }
     document.querySelector(".nombre").textContent = `${personaje.nombre} ${personaje.familia}`;
     document.querySelector(".edad-x").textContent = personaje.edad;
     document.querySelector(".anyo-reinado").textContent = personaje.anyosReinando;
