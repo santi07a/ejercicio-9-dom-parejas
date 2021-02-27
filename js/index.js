@@ -218,30 +218,30 @@ function DOM() {
     }
 
     if (personaje instanceof Rey) {
-      document.querySelector(".metadata .li-asesor").remove();
-      document.querySelector(".metadata .li-arma").remove();
-      document.querySelector(".metadata .li-peloteo").remove();
-      document.querySelector(".metadata .li-sirve").remove();
-      document.querySelector(".metadata .li-destreza").remove();
+      personajeDummy.querySelector(".metadata .li-asesor").remove();
+      personajeDummy.querySelector(".metadata .li-arma").remove();
+      personajeDummy.querySelector(".metadata .li-peloteo").remove();
+      personajeDummy.querySelector(".metadata .li-sirve").remove();
+      personajeDummy.querySelector(".metadata .li-destreza").remove();
     } else if (personaje instanceof Luchador) {
-      document.querySelector(".metadata .li-asesor").remove();
-      document.querySelector(".metadata .li-anyos").remove();
-      document.querySelector(".metadata .li-peloteo").remove();
-      document.querySelector(".metadata .li-sirve").remove();
+      personajeDummy.querySelector(".metadata .li-asesor").remove();
+      personajeDummy.querySelector(".metadata .li-anyos").remove();
+      personajeDummy.querySelector(".metadata .li-peloteo").remove();
+      personajeDummy.querySelector(".metadata .li-sirve").remove();
     } else if (personaje instanceof Asesor) {
-      document.querySelector(".metadata .li-destreza").remove();
-      document.querySelector(".metadata .li-anyos").remove();
-      document.querySelector(".metadata .li-peloteo").remove();
-      document.querySelector(".metadata .li-sirve").remove();
-      document.querySelector(".metadata .li-arma").remove();
-      document.querySelector(".metadata .li-anyos").remove();
+      personajeDummy.querySelector(".metadata .li-destreza").remove();
+      personajeDummy.querySelector(".metadata .li-anyos").remove();
+      personajeDummy.querySelector(".metadata .li-peloteo").remove();
+      personajeDummy.querySelector(".metadata .li-sirve").remove();
+      personajeDummy.querySelector(".metadata .li-arma").remove();
+      personajeDummy.querySelector(".metadata .li-anyos").remove();
     }
     else if (personaje instanceof Escudero) {
-      document.querySelector(".metadata .li-asesor").remove();
-      document.querySelector(".metadata .li-arma").remove();
-      document.querySelector(".metadata .li-peloteo").remove();
-      document.querySelector(".metadata .li-anyos").remove();
-      document.querySelector(".metadata .li-destreza").remove();
+      personajeDummy.querySelector(".metadata .li-asesor").remove();
+      personajeDummy.querypersonajeDummySelector(".metadata .li-arma").remove();
+      personajeDummy.querySelector(".metadata .li-peloteo").remove();
+      personajeDummy.querySelector(".metadata .li-anyos").remove();
+      personajeDummy.querySelector(".metadata .li-destreza").remove();
     }
 
     setTimeout(() => {
