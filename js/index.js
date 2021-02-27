@@ -175,16 +175,22 @@ function DOM() {
     const imagenes = document.querySelectorAll("img");
     if (personaje.nombre.toLowerCase() === "bronn") {
       imagenes.src = "img/bronn.jpg";
+      imagenes.alt = "Plano medio de Bronn Aguasnegras en altísima calidad"
     } else if (personaje.nombre.toLowerCase() === "daenerys") {
       imagenes.src = "img/daenerys.jpg";
+      imagenes.alt = "Plano medio de Daenerys Targaryen en altísima calidad"
     } else if (personaje.nombre.toLowerCase() === "jamie") {
       imagenes.src = "img/jamie.jpg";
+      imagenes.alt = "Plano medio de Jamie Lannister en altísima calidad"
     } else if (personaje.nombre.toLowerCase() === "tyrion") {
       imagenes.src = "img/tyrion.jpg";
+      imagenes.alt = "Plano medio de Tyrion Lannister en altísima calidad"
     } else if (personaje.nombre.toLowerCase() === "joffrey") {
       imagenes.src = "img/joffrey.jpg";
+      imagenes.alt = "Plano medio de Joffrey Baratheon en altísima calidad"
     } else {
       imagenes.src = "img/no-one.jpg";
+      imagenes.alt = "Aquí deberia haber una foto de algun personaje de Juego de Tronos"
     }
     document.querySelector(".nombre").textContent = `${personaje.nombre} ${personaje.familia}`;
     document.querySelector(".edad-x").textContent = personaje.edad;
