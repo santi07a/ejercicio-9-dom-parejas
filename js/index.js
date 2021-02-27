@@ -167,7 +167,6 @@ function resumir() {
 }
 
 //punto 1 DOM
-const iconoVivoMuerto = document.querySelector(".icono-estado");
 
 function DOM() {
   for (personaje of personajesGot) {
@@ -201,12 +200,13 @@ function DOM() {
       document.querySelector(".emoji").textContent = '🗡';
     } else if (personaje.constructor.name.toLowerCase() === 'asesor') {
       document.querySelector(".emoji").textContent = '🎓';
-    } else (personaje.constructor.name.toLowerCase() === 'escudero');
+    } else if (personaje.constructor.name.toLowerCase() === 'escudero');
     document.querySelector(".emoji").textContent = '🛡';
-    if (personaje.estado === 'Muerto') {
-      iconoVivoMuerto.remove();
-    };
-
+    if (personaje.estado === 'muerto') {
+      document.querySelector(".icono-estado").lastChild.remove();
+    } else if (personaje.estado === 'vivo') {
+      document.querySelector(".icono-estado").firstChild.remove();
+    }
   };
 }
 
