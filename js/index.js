@@ -193,7 +193,7 @@ function DOM() {
       imagenes.alt = "Aquí deberia haber una foto de algun personaje de Juego de Tronos"
     }
     document.querySelector(".nombre").textContent = `${personaje.nombre} ${personaje.familia}`;
-    document.querySelector(".edad").textContent = personaje.edad;
+    document.querySelector(".edad-x").textContent = personaje.edad;
     document.querySelector(".anyo-reinado").textContent = personaje.anyosReinando;
     document.querySelector(".arma").textContent = personaje.armaQueUtiliza;
     document.querySelector(".destreza").textContent = personaje.potencia;
@@ -240,9 +240,10 @@ function DOM() {
       document.querySelector(".metadata .li-destreza").remove();
     }
 
-    /*('li-asesora', 'li-arma', 'li-peloteo', 'li-destreza', 'li-sirve')
-*/
+    setTimeout(() => {
+      document.querySelector(".personajes").append(personajeDummy);
+    }, 1000)
   }
-};
+}
 
-
+DOM();
