@@ -172,7 +172,7 @@ function DOM() {
   for (personaje of personajesGot) {
     const personajeDummy = document.querySelector(".personaje-dummy").cloneNode(true);
     personajeDummy.classList.remove("personaje-dummy");
-    const imagenes = document.querySelectorAll("img");
+    const imagenes = personajeDummy.querySelectorAll("img");
     if (personaje.nombre.toLowerCase() === "bronn") {
       imagenes.src = "img/bronn.jpg";
       imagenes.alt = "Plano medio de Bronn Aguasnegras en altísima calidad"
@@ -192,30 +192,35 @@ function DOM() {
       imagenes.src = "img/no-one.jpg";
       imagenes.alt = "Aquí deberia haber una foto de algun personaje de Juego de Tronos"
     }
-    document.querySelector(".nombre").textContent = `${personaje.nombre} ${personaje.familia}`;
-    document.querySelector(".edad-x").textContent = personaje.edad;
-    document.querySelector(".anyo-reinado").textContent = personaje.anyosReinando;
-    document.querySelector(".arma").textContent = personaje.armaQueUtiliza;
-    document.querySelector(".destreza").textContent = personaje.potencia;
-    document.querySelector(".peloteo").textContent = personaje.grado;
-    document.querySelector(".asesora").textContent = personaje.asesoraA;
-    document.querySelector(".sirve").textContent = personaje.personajeAlQueSirve;
+
+    personajeDummy.querySelector(".nombre").textContent = `${personaje.nombre} ${personaje.familia}`;
+    personajeDummy.querySelector(".edad-x").textContent = personaje.edad;
+    personajeDummy.querySelector(".anyo-reinado").textContent = personaje.anyosReinando;
+    personajeDummy.querySelector(".arma").textContent = personaje.armaQueUtiliza;
+    personajeDummy.querySelector(".destreza").textContent = personaje.potencia;
+    personajeDummy.querySelector(".peloteo").textContent = personaje.grado;
+    personajeDummy.querySelector(".asesora").textContent = personaje.asesoraA;
+    personajeDummy.querySelector(".sirve").textContent = personaje.personajeAlQueSirve;
+
     if (personaje.constructor.name.toLowerCase() === 'rey') {
-      document.querySelector(".emoji").textContent = '👑';
+      personajeDummy.querySelector(".emoji").textContent = '👑';
     } else if (personaje.constructor.name.toLowerCase() === 'luchador') {
-      document.querySelector(".emoji").textContent = '🗡';
+      personajeDummy.querySelector(".emoji").textContent = '🗡';
     } else if (personaje.constructor.name.toLowerCase() === 'asesor') {
-      document.querySelector(".emoji").textContent = '🎓';
+      personajeDummy.querySelector(".emoji").textContent = '🎓';
     } else if (personaje.constructor.name.toLowerCase() === 'escudero');
-    document.querySelector(".emoji").textContent = '🛡';
+    personajeDummy.querySelector(".emoji").textContent = '🛡';
+
     if (personaje.estado === 'muerto') {
-      document.querySelector(".icono-estado").lastChild.remove();
+      personajeDummy.querySelector(".icono-estado").lastChild.remove();
     } else if (personaje.estado === 'vivo') {
-      document.querySelector(".icono-estado").firstChild.remove();
+      personajeDummy.querySelector(".icono-estado").firstChild.remove();
     }
+
     setTimeout(() => {
       document.querySelector(".personajes").append(personajeDummy);
     }, 1000)
+    console.log(personaje.constructor.name.toLowerCase());
   }
 }
 
