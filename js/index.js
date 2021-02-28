@@ -224,11 +224,12 @@ function DOM() {
     personajeDummy.querySelector(".asesora").textContent = personaje.personajeQueAsesora;
     personajeDummy.querySelector(".sirve").textContent = personaje.sirveAlPersonaje;
 
+    /* Esto solo hace que desaparezca la palabra estado: del html
     if (personaje.estado === 'muerto') {
       personajeDummy.querySelector(".icono-estado").lastChild.remove();
     } else if (personaje.estado === 'vivo') {
       personajeDummy.querySelector(".icono-estado").firstChild.remove();
-    }
+    }*/
 
     if (personaje instanceof Rey) {
       personajeDummy.querySelector(".li-asesora").remove();
@@ -251,10 +252,13 @@ function DOM() {
     else if (personaje instanceof Escudero) {
       personajeDummy.querySelector(".li-asesora").remove();
       personajeDummy.querySelector(".li-arma").remove();
+
       personajeDummy.querySelector(".li-anyos").remove();
       personajeDummy.querySelector(".li-destreza").remove();
     }
-    document.querySelector(".personajes").append(personajeDummy);
+    setTimeout(() => {
+      document.querySelector(".personajes").append(personajeDummy);
+    }, 1000 * (personajesGot.findIndex((persona) => persona === personaje) + 1))
   }
 }
 
