@@ -172,25 +172,20 @@ function DOM() {
   for (personaje of personajesGot) {
     const personajeDummy = document.querySelector(".personaje-dummy").cloneNode(true);
     personajeDummy.classList.remove("personaje-dummy");
-    const imagenes = personajeDummy.querySelectorAll("img");
+    const imagen = personajeDummy.querySelectorAll("img");
+    imagen.alt = `Plano medio de ${personaje.nombre} ${personaje.familia} en altísima calidad`
     if (personaje.nombre.toLowerCase() === "bronn") {
-      imagenes.src = "img/bronn.jpg";
-      imagenes.alt = "Plano medio de Bronn Aguasnegras en altísima calidad"
+      imagen.src = "img/bronn.jpg";
     } else if (personaje.nombre.toLowerCase() === "daenerys") {
-      imagenes.src = "img/daenerys.jpg";
-      imagenes.alt = "Plano medio de Daenerys Targaryen en altísima calidad"
+      imagen.src = "img/daenerys.jpg";
     } else if (personaje.nombre.toLowerCase() === "jamie") {
-      imagenes.src = "img/jamie.jpg";
-      imagenes.alt = "Plano medio de Jamie Lannister en altísima calidad"
+      imagen.src = "img/jamie.jpg";
     } else if (personaje.nombre.toLowerCase() === "tyrion") {
-      imagenes.src = "img/tyrion.jpg";
-      imagenes.alt = "Plano medio de Tyrion Lannister en altísima calidad"
+      imagen.src = "img/tyrion.jpg";
     } else if (personaje.nombre.toLowerCase() === "joffrey") {
-      imagenes.src = "img/joffrey.jpg";
-      imagenes.alt = "Plano medio de Joffrey Baratheon en altísima calidad"
+      imagen.src = "img/joffrey.jpg";
     } else {
-      imagenes.src = "img/no-one.jpg";
-      imagenes.alt = "Aquí deberia haber una foto de algun personaje de Juego de Tronos"
+      imagen.src = "img/no-one.jpg";
     }
 
     personajeDummy.querySelector(".nombre").textContent = `${personaje.nombre} ${personaje.familia}`;
@@ -247,7 +242,6 @@ function DOM() {
     setTimeout(() => {
       document.querySelector(".personajes").append(personajeDummy);
     }, 1000)
-    console.log(personaje.constructor.name.toLowerCase());
   }
 }
 
