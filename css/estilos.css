@@ -101,6 +101,6 @@ img.card-img-top {
 }
 
 .img-estado {
-  transition: transform 0.5s;
+  transition: transform 1s;
   transform: scaleY(-1);
 }

@@ -227,6 +227,7 @@ function DOM() {
 
     if (personaje.estado === 'muerto') {
       personajeDummy.querySelector(".pulgar-arriba").remove();
+      imagen.classList.add("img-estado");
     } else if (personaje.estado === 'vivo') {
       personajeDummy.querySelector(".pulgar-abajo").remove();
     }
