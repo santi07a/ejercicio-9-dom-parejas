@@ -172,7 +172,7 @@ function DOM() {
   for (personaje of personajesGot) {
     const personajeDummy = document.querySelector(".personaje-dummy").cloneNode(true);
     personajeDummy.classList.remove("personaje-dummy");
-    const imagen = personajeDummy.querySelectorAll("img");
+    const imagen = personajeDummy.querySelector("img");
     imagen.alt = `Plano medio de ${personaje.nombre} ${personaje.familia} en altísima calidad`
     if (personaje.nombre.toLowerCase() === "bronn") {
       imagen.src = "img/bronn.jpg";
