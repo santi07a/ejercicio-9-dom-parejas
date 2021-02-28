@@ -203,16 +203,16 @@ function DOM() {
         iconoMuerto = personajeDummy.querySelector(".icono-estado").lastChild.cloneNode(true);
      */
 
-    personajeIcono.textContent = chequeaIcono();
+    personajeDummy.querySelector(".emoji").textContent = chequeaIcono();
     function chequeaIcono() {
       if (personaje instanceof Rey) {
-        return personajeIcono.textContent = '👑';
+        return '👑';
       } else if (personaje instanceof Luchador) {
-        return personajeIcono.textContent = '🗡';
+        return '🗡';
       } else if (personaje instanceof Asesor) {
-        return personajeIcono.textContent = '🎓';
+        return '🎓';
       } else if (personaje instanceof Escudero) {
-        return personajeIcono.textContent = '🛡';
+        return '🛡';
       }
     }
 
@@ -223,7 +223,7 @@ function DOM() {
     personajeDummy.querySelector(".destreza").textContent = personaje.potencia;
     personajeDummy.querySelector(".peloteo").textContent = personaje.grado;
     personajeDummy.querySelector(".asesora").textContent = personaje.asesoraA;
-    personajeDummy.querySelector(".sirve").textContent = personaje.personajeAlQueSirve; * /
+    personajeDummy.querySelector(".sirve").textContent = personaje.personajeAlQueSirve;
 
     if (personaje.estado === 'muerto') {
       personajeDummy.querySelector(".icono-estado").lastChild.remove();
