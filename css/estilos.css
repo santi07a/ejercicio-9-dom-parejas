@@ -101,5 +101,6 @@ img.card-img-top {
 }
 
 .img-estado {
-  rotate: 180(deg);
+  transition: transform 1s;
+  transform: scaleY(-1);
 }

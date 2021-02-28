@@ -201,6 +201,7 @@ function DOM() {
         iconoVivo = personajeDummy.querySelector(".icono-estado").firstChild.cloneNode(true);
         iconoMuerto = personajeDummy.querySelector(".icono-estado").lastChild.cloneNode(true);
      */
+    const imagenPersonaje = personajeDummy.querySelector(".card-img-top")
 
     personajeDummy.querySelector(".emoji").textContent = chequeaIcono();
     function chequeaIcono() {
@@ -224,12 +225,12 @@ function DOM() {
     personajeDummy.querySelector(".asesora").textContent = personaje.personajeQueAsesora;
     personajeDummy.querySelector(".sirve").textContent = personaje.sirveAlPersonaje;
 
-    /* Esto solo hace que desaparezca la palabra estado: del html
     if (personaje.estado === 'muerto') {
-      personajeDummy.querySelector(".icono-estado").lastChild.remove();
+      personajeDummy.querySelector(".pulgar-arriba").remove();
+      imagen.classList.add("img-estado");
     } else if (personaje.estado === 'vivo') {
-      personajeDummy.querySelector(".icono-estado").firstChild.remove();
-    }*/
+      personajeDummy.querySelector(".pulgar-abajo").remove();
+    }
 
     if (personaje instanceof Rey) {
       personajeDummy.querySelector(".li-asesora").remove();
@@ -259,7 +260,21 @@ function DOM() {
     setTimeout(() => {
       document.querySelector(".personajes").append(personajeDummy);
     }, 1000 * (personajesGot.findIndex((persona) => persona === personaje) + 1))
+
+    /*punto 2 DOM
+    const dummyMuere = document.querySelector('.boton-muere');
+
+    dummyMuere.addEventListener("click", () => {
+      personaje.estado = 'muere';
+      DOM();
+
+    }
+
+    )
+*/
   }
 }
 
 DOM();
+
+
