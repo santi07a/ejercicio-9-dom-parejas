@@ -172,7 +172,7 @@ function DOM() {
   for (personaje of personajesGot) {
     const personajeDummy = document.querySelector(".personaje-dummy").cloneNode(true);
     personajeDummy.classList.remove("personaje-dummy");
-    const imagen = personajeDummy.querySelectorAll("img");
+    const imagen = personajeDummy.querySelector("img");
     imagen.alt = `Plano medio de ${personaje.nombre} ${personaje.familia} en altísima calidad`
     if (personaje.nombre.toLowerCase() === "bronn") {
       imagen.src = "img/bronn.jpg";
@@ -197,13 +197,13 @@ function DOM() {
     personajeDummy.querySelector(".asesora").textContent = personaje.asesoraA;
     personajeDummy.querySelector(".sirve").textContent = personaje.personajeAlQueSirve;
 
-    if (personaje.constructor.name.toLowerCase() === 'rey') {
+    if (personaje instanceof Rey) {
       personajeDummy.querySelector(".emoji").textContent = '👑';
-    } else if (personaje.constructor.name.toLowerCase() === 'luchador') {
+    } else if (personaje instanceof Luchador) {
       personajeDummy.querySelector(".emoji").textContent = '🗡';
-    } else if (personaje.constructor.name.toLowerCase() === 'asesor') {
+    } else if (personaje instanceof Asesor) {
       personajeDummy.querySelector(".emoji").textContent = '🎓';
-    } else if (personaje.constructor.name.toLowerCase() === 'escudero');
+    } else if (personaje instanceof Escudero);
     personajeDummy.querySelector(".emoji").textContent = '🛡';
 
     if (personaje.estado === 'muerto') {
