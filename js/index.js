@@ -171,6 +171,7 @@ function DOM() {
   for (personaje of personajesGot) {
     const personajeDummy = document.querySelector(".personaje-dummy").cloneNode(true);
     personajeDummy.classList.remove("personaje-dummy");
+    personajeDummy.classList.add("eliminar");
     const imagen = personajeDummy.querySelector("img");
     imagen.alt = `Plano medio de ${personaje.nombre} ${personaje.familia} en altísima calidad`
     if (personaje.nombre.toLowerCase() === "bronn") {
@@ -188,20 +189,20 @@ function DOM() {
     }
 
     /*   Nueva idea de como crear una lista para luego usar en cada tipo de personaje solo la info que nos interesa */
-    /*     personajeNombre = personajeDummy.querySelector(".nombre");
-        personajeEdad = personajeDummy.querySelector(".edad-x");
-        personajeReinado = personajeDummy.querySelector(".anyo-reinado");
-        personajeArma = personajeDummy.querySelector(".arma");
-        personajeDestreza = personajeDummy.querySelector(".destreza");
-        personajePeloteo = personajeDummy.querySelector(".peloteo");
-        presonajeAsesoraA = personajeDummy.querySelector(".asesora");
-        personajeSirveA = personajeDummy.querySelector(".sirve");
-        personajeIcono = personajeDummy.querySelector(".emoji");
-        personajeEstado = personajeDummy.querySelector(".icono-estado");
-        iconoVivo = personajeDummy.querySelector(".icono-estado").firstChild.cloneNode(true);
-        iconoMuerto = personajeDummy.querySelector(".icono-estado").lastChild.cloneNode(true);
-     */
-    const imagenPersonaje = personajeDummy.querySelector(".card-img-top")
+    /*
+    const personajeNombre = personajeDummy.querySelector(".nombre");
+    const personajeEdad = personajeDummy.querySelector(".edad-x");
+    const personajeReinado = personajeDummy.querySelector(".anyo-reinado");
+    const personajeArma = personajeDummy.querySelector(".arma");
+    const personajeDestreza = personajeDummy.querySelector(".destreza");
+    const personajePeloteo = personajeDummy.querySelector(".peloteo");
+    const presonajeAsesoraA = personajeDummy.querySelector(".asesora");
+    const personajeSirveA = personajeDummy.querySelector(".sirve");
+    const personajeIcono = personajeDummy.querySelector(".emoji");
+    const personajeEstado = personajeDummy.querySelector(".icono-estado");
+    const iconoVivo = personajeDummy.querySelector(".icono-estado").firstChild.cloneNode(true);
+    const iconoMuerto = personajeDummy.querySelector(".icono-estado").lastChild.cloneNode(true);
+    */
 
     personajeDummy.querySelector(".emoji").textContent = chequeaIcono();
     function chequeaIcono() {
@@ -259,22 +260,25 @@ function DOM() {
     }
     setTimeout(() => {
       document.querySelector(".personajes").append(personajeDummy);
-    }, 1000 * (personajesGot.findIndex((persona) => persona === personaje) + 1))
+    }, 1000 * (personajesGot.findIndex(persona => persona === personaje) + 1)
+    );
 
-    /*punto 2 DOM
-    const dummyMuere = document.querySelector('.boton-muere');
-
-    dummyMuere.addEventListener("click", () => {
-      personaje.estado = 'muere';
-      DOM();
-
-    }
-
-    )
-*/
   }
 }
-
 DOM();
 
-
+document.body.addEventListener("click", boton => {
+  if (boton.target.classList.contains("boton-muere")) {
+    for (const personaje of personajesGot) {
+      const nombreCompletoPersonaje = `${personaje.nombre} ${personaje.familia}`;
+      if (boton.target.closest(".card-body").childNodes[1].innerText === nombreCompletoPersonaje) {
+        personaje.morir();
+      }
+    }
+    const quitarElementosClonados = document.querySelectorAll(".eliminar");
+    for (const eliminar of quitarElementosClonados) {
+      document.querySelector(".personajes").removeChild(eliminar);
+    }
+    DOM();
+  }
+});
