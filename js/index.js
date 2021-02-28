@@ -74,14 +74,22 @@ class Asesor extends Personajes {
 class Escudero extends Personajes {
   sirveAlPersonaje;
   pelotismo;
-  gradoPelotismo;
-  constructor(nombre, familia, edad, personajeAlQueSirve, grado) {
+
+  constructor(nombre, familia, edad, personajeAlQueSirve, gradoPelotismo) {
     super();
     this.nombre = nombre;
     this.familia = familia;
     this.edad = edad;
     this.sirveAlPersonaje = personajeAlQueSirve;
-    this.gradoPelotismo = this.pelotismo;
+    this.pelotismo = gradoPelotismo
+
+  }
+  set pelotismo(numero) {
+    if (numero < 1) {
+      numero = 1;
+    } else if (numero > 10) {
+      numero = 10;
+    }
   }
   set verificarPersonaje(personajeIndefinido) {
     this.sirveAlPersonaje(personajeIndefinido);
@@ -91,16 +99,7 @@ class Escudero extends Personajes {
       this.personajeQueSirve = personaje;
     }
   }
-  set gradoPelotismo(gradoAVerificar) {
-    this.pelotismo(gradoAVerificar);
-  }
-  pelotismo(grado) {
-    if (grado < 0) {
-      this.grado = 1
-    } else if (grado > 10) {
-      this.grado = 10
-    }
-  };
+
   comunicar() {
     super.comunicar();
     return "Soy un Loser";
@@ -110,13 +109,13 @@ class Escudero extends Personajes {
 //punto 2
 let joffrey = new Rey('Joffrey', 'Baratheon', 20, 2)
 
-let jamie = new Luchador('Jamie', 'Lannister', 40, 'Espada');
+let jamie = new Luchador('Jamie', 'Lannister', 40, 'Espada', 10);
 
-let danaerys = new Luchador('Daenerys', 'Targaryen', 30, 'Dragones');
+let danaerys = new Luchador('Daenerys', 'Targaryen', 30, 'Dragones', 5);
 
 let tyrion = new Asesor('Tyrion', 'Lannister', 38, 'Daenerys');
 
-let bronn = new Escudero('Bronn', 'Aguasnegras', 50, 'Jamie');
+let bronn = new Escudero('Bronn', 'Aguasnegras', 50, 'Jamie', 5);
 
 //punto 3
 let personajesGot = [joffrey, jamie, danaerys, tyrion, bronn];
@@ -219,42 +218,41 @@ function DOM() {
     personajeDummy.querySelector(".nombre").textContent = `${personaje.nombre} ${personaje.familia}`;
     personajeDummy.querySelector(".edad-x").textContent = personaje.edad;
     personajeDummy.querySelector(".anyo-reinado").textContent = personaje.anyosReinando;
-    personajeDummy.querySelector(".arma").textContent = personaje.armaQueUtiliza;
-    personajeDummy.querySelector(".destreza").textContent = personaje.potencia;
-    personajeDummy.querySelector(".peloteo").textContent = personaje.grado;
-    personajeDummy.querySelector(".asesora").textContent = personaje.asesoraA;
-    personajeDummy.querySelector(".sirve").textContent = personaje.personajeAlQueSirve;
+    personajeDummy.querySelector(".arma").textContent = personaje.arma;
+    personajeDummy.querySelector(".destreza").textContent = personaje.destreza;
+    personajeDummy.querySelector(".peloteo").textContent = personaje.pelotismo;
+    personajeDummy.querySelector(".asesora").textContent = personaje.personajeQueAsesora;
+    personajeDummy.querySelector(".sirve").textContent = personaje.sirveAlPersonaje;
 
     if (personaje.estado === 'muerto') {
       personajeDummy.querySelector(".icono-estado").lastChild.remove();
     } else if (personaje.estado === 'vivo') {
       personajeDummy.querySelector(".icono-estado").firstChild.remove();
     }
+
     if (personaje instanceof Rey) {
-      personajeDummy.querySelector(".metadata .li-asesor").remove();
-      personajeDummy.querySelector(".metadata .li-arma").remove();
-      personajeDummy.querySelector(".metadata .li-peloteo").remove();
-      personajeDummy.querySelector(".metadata .li-sirve").remove();
-      personajeDummy.querySelector(".metadata .li-destreza").remove();
+      personajeDummy.querySelector(".li-asesora").remove();
+      personajeDummy.querySelector(".li-arma").remove();
+      personajeDummy.querySelector(".li-peloteo").remove();
+      personajeDummy.querySelector(".li-sirve").remove();
+      personajeDummy.querySelector(".li-destreza").remove();
     } else if (personaje instanceof Luchador) {
-      personajeDummy.querySelector(".metadata .li-asesor").remove();
-      personajeDummy.querySelector(".metadata .li-anyos").remove();
-      personajeDummy.querySelector(".metadata .li-peloteo").remove();
-      personajeDummy.querySelector(".metadata .li-sirve").remove();
+      personajeDummy.querySelector(".li-asesora").remove();
+      personajeDummy.querySelector(".li-anyos").remove();
+      personajeDummy.querySelector(".li-peloteo").remove();
+      personajeDummy.querySelector(".li-sirve").remove();
     } else if (personaje instanceof Asesor) {
-      personajeDummy.querySelector(".metadata .li-destreza").remove();
-      personajeDummy.querySelector(".metadata .li-anyos").remove();
-      personajeDummy.querySelector(".metadata .li-peloteo").remove();
-      personajeDummy.querySelector(".metadata .li-sirve").remove();
-      personajeDummy.querySelector(".metadata .li-arma").remove();
-      personajeDummy.querySelector(".metadata .li-anyos").remove();
+      personajeDummy.querySelector(".li-destreza").remove();
+      personajeDummy.querySelector(".li-anyos").remove();
+      personajeDummy.querySelector(".li-peloteo").remove();
+      personajeDummy.querySelector(".li-sirve").remove();
+      personajeDummy.querySelector(".li-arma").remove();
     }
     else if (personaje instanceof Escudero) {
-      personajeDummy.querySelector(".metadata .li-asesor").remove();
-      personajeDummy.querypersonajeDummySelector(".metadata .li-arma").remove();
-      personajeDummy.querySelector(".metadata .li-peloteo").remove();
-      personajeDummy.querySelector(".metadata .li-anyos").remove();
-      personajeDummy.querySelector(".metadata .li-destreza").remove();
+      personajeDummy.querySelector(".li-asesora").remove();
+      personajeDummy.querySelector(".li-arma").remove();
+      personajeDummy.querySelector(".li-anyos").remove();
+      personajeDummy.querySelector(".li-destreza").remove();
     }
     document.querySelector(".personajes").append(personajeDummy);
   }
