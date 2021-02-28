@@ -188,6 +188,34 @@ function DOM() {
       imagen.src = "img/no-one.jpg";
     }
 
+    /*   Nueva idea de como crear una lista para luego usar en cada tipo de personaje solo la info que nos interesa */
+    /*     personajeNombre = personajeDummy.querySelector(".nombre");
+        personajeEdad = personajeDummy.querySelector(".edad-x");
+        personajeReinado = personajeDummy.querySelector(".anyo-reinado");
+        personajeArma = personajeDummy.querySelector(".arma");
+        personajeDestreza = personajeDummy.querySelector(".destreza");
+        personajePeloteo = personajeDummy.querySelector(".peloteo");
+        presonajeAsesoraA = personajeDummy.querySelector(".asesora");
+        personajeSirveA = personajeDummy.querySelector(".sirve");
+        personajeIcono = personajeDummy.querySelector(".emoji");
+        personajeEstado = personajeDummy.querySelector(".icono-estado");
+        iconoVivo = personajeDummy.querySelector(".icono-estado").firstChild.cloneNode(true);
+        iconoMuerto = personajeDummy.querySelector(".icono-estado").lastChild.cloneNode(true);
+     */
+
+    personajeIcono.textContent = chequeaIcono();
+    function chequeaIcono() {
+      if (personaje instanceof Rey) {
+        return personajeIcono.textContent = '👑';
+      } else if (personaje instanceof Luchador) {
+        return personajeIcono.textContent = '🗡';
+      } else if (personaje instanceof Asesor) {
+        return personajeIcono.textContent = '🎓';
+      } else if (personaje instanceof Escudero) {
+        return personajeIcono.textContent = '🛡';
+      }
+    }
+
     personajeDummy.querySelector(".nombre").textContent = `${personaje.nombre} ${personaje.familia}`;
     personajeDummy.querySelector(".edad-x").textContent = personaje.edad;
     personajeDummy.querySelector(".anyo-reinado").textContent = personaje.anyosReinando;
@@ -195,23 +223,13 @@ function DOM() {
     personajeDummy.querySelector(".destreza").textContent = personaje.potencia;
     personajeDummy.querySelector(".peloteo").textContent = personaje.grado;
     personajeDummy.querySelector(".asesora").textContent = personaje.asesoraA;
-    personajeDummy.querySelector(".sirve").textContent = personaje.personajeAlQueSirve;
-
-    if (personaje instanceof Rey) {
-      personajeDummy.querySelector(".emoji").textContent = '👑';
-    } else if (personaje instanceof Luchador) {
-      personajeDummy.querySelector(".emoji").textContent = '🗡';
-    } else if (personaje instanceof Asesor) {
-      personajeDummy.querySelector(".emoji").textContent = '🎓';
-    } else if (personaje instanceof Escudero);
-    personajeDummy.querySelector(".emoji").textContent = '🛡';
+    personajeDummy.querySelector(".sirve").textContent = personaje.personajeAlQueSirve; * /
 
     if (personaje.estado === 'muerto') {
       personajeDummy.querySelector(".icono-estado").lastChild.remove();
     } else if (personaje.estado === 'vivo') {
       personajeDummy.querySelector(".icono-estado").firstChild.remove();
     }
-
     if (personaje instanceof Rey) {
       personajeDummy.querySelector(".metadata .li-asesor").remove();
       personajeDummy.querySelector(".metadata .li-arma").remove();
@@ -238,10 +256,7 @@ function DOM() {
       personajeDummy.querySelector(".metadata .li-anyos").remove();
       personajeDummy.querySelector(".metadata .li-destreza").remove();
     }
-
-    setTimeout(() => {
-      document.querySelector(".personajes").append(personajeDummy);
-    }, 1000)
+    document.querySelector(".personajes").append(personajeDummy);
   }
 }
 
