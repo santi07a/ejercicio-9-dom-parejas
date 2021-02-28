@@ -282,3 +282,32 @@ document.body.addEventListener("click", boton => {
     DOM();
   }
 });
+document.body.addEventListener("click", boton => {
+  if (boton.target.classList.contains("boton-habla")) {
+    for (const personaje of personajesGot) {
+      const nombreCompletoPersonaje = `${personaje.nombre} ${personaje.familia}`;
+      if (boton.target.closest(".card-body").childNodes[1].innerText === nombreCompletoPersonaje) {
+        boton.target.closest(".container").nextElementSibling.childNodes[1].innerText = personaje.comunicar();
+        boton.target.closest(".container").nextElementSibling.classList.add("on");
+        const imagen = boton.target.closest(".container").nextElementSibling.childNodes[3];
+        imagen.alt = `Plano medio de ${personaje.nombre} ${personaje.familia} en altísima calidad`
+        if (personaje.nombre.toLowerCase() === "bronn") {
+          imagen.src = "img/bronn.jpg";
+        } else if (personaje.nombre.toLowerCase() === "daenerys") {
+          imagen.src = "img/daenerys.jpg";
+        } else if (personaje.nombre.toLowerCase() === "jamie") {
+          imagen.src = "img/jamie.jpg";
+        } else if (personaje.nombre.toLowerCase() === "tyrion") {
+          imagen.src = "img/tyrion.jpg";
+        } else if (personaje.nombre.toLowerCase() === "joffrey") {
+          imagen.src = "img/joffrey.jpg";
+        } else {
+          imagen.src = "img/no-one.jpg";
+        }
+      }
+      setTimeout(() => {
+        boton.target.closest(".container").nextElementSibling.classList.remove("on");
+      }, 2000);
+    }
+  }
+});
