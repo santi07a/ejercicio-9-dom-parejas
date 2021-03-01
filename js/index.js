@@ -173,20 +173,8 @@ function DOM() {
     personajeDummy.classList.remove("personaje-dummy");
     personajeDummy.classList.add("eliminar");
     const imagen = personajeDummy.querySelector("img");
-    imagen.alt = `Plano medio de ${personaje.nombre} ${personaje.familia} en altísima calidad`
-    if (personaje.nombre.toLowerCase() === "bronn") {
-      imagen.src = "img/bronn.jpg";
-    } else if (personaje.nombre.toLowerCase() === "daenerys") {
-      imagen.src = "img/daenerys.jpg";
-    } else if (personaje.nombre.toLowerCase() === "jamie") {
-      imagen.src = "img/jamie.jpg";
-    } else if (personaje.nombre.toLowerCase() === "tyrion") {
-      imagen.src = "img/tyrion.jpg";
-    } else if (personaje.nombre.toLowerCase() === "joffrey") {
-      imagen.src = "img/joffrey.jpg";
-    } else {
-      imagen.src = "img/no-one.jpg";
-    }
+    imagen.alt = `Plano medio de ${personaje.nombre} ${personaje.familia} en altísima calidad`;
+    imagen.src = `img/${personaje.nombre.toLowerCase()}.jpg`;
 
 
     personajeDummy.querySelector(".emoji").textContent = chequeaIcono();
