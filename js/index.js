@@ -188,21 +188,6 @@ function DOM() {
       imagen.src = "img/no-one.jpg";
     }
 
-    /*   Nueva idea de como crear una lista para luego usar en cada tipo de personaje solo la info que nos interesa */
-    /*
-    const personajeNombre = personajeDummy.querySelector(".nombre");
-    const personajeEdad = personajeDummy.querySelector(".edad-x");
-    const personajeReinado = personajeDummy.querySelector(".anyo-reinado");
-    const personajeArma = personajeDummy.querySelector(".arma");
-    const personajeDestreza = personajeDummy.querySelector(".destreza");
-    const personajePeloteo = personajeDummy.querySelector(".peloteo");
-    const presonajeAsesoraA = personajeDummy.querySelector(".asesora");
-    const personajeSirveA = personajeDummy.querySelector(".sirve");
-    const personajeIcono = personajeDummy.querySelector(".emoji");
-    const personajeEstado = personajeDummy.querySelector(".icono-estado");
-    const iconoVivo = personajeDummy.querySelector(".icono-estado").firstChild.cloneNode(true);
-    const iconoMuerto = personajeDummy.querySelector(".icono-estado").lastChild.cloneNode(true);
-    */
 
     personajeDummy.querySelector(".emoji").textContent = chequeaIcono();
     function chequeaIcono() {
