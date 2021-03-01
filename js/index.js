@@ -13,6 +13,7 @@ class Personajes {
 
 class Rey extends Personajes {
   anyosReinando;
+  icono = '👑';
   constructor(nombre, familia, edad, anyosDeReinado) {
     super();
     this.nombre = nombre;
@@ -30,6 +31,7 @@ class Rey extends Personajes {
 class Luchador extends Personajes {
   arma;
   destreza;
+  icono = '🗡';
   constructor(nombre, familia, edad, armaQueUtiliza, potencia) {
     super();
     this.nombre = nombre;
@@ -58,6 +60,7 @@ class Luchador extends Personajes {
 }
 class Asesor extends Personajes {
   personajeQueAsesora;
+  icono = '🎓';
   constructor(nombre, familia, edad, asesoraA) {
     super();
     this.nombre = nombre;
@@ -74,6 +77,7 @@ class Asesor extends Personajes {
 class Escudero extends Personajes {
   sirveAlPersonaje;
   pelotismo;
+  icono = '🛡';
 
   constructor(nombre, familia, edad, personajeAlQueSirve, gradoPelotismo) {
     super();
@@ -173,50 +177,11 @@ function DOM() {
     personajeDummy.classList.remove("personaje-dummy");
     personajeDummy.classList.add("eliminar");
     const imagen = personajeDummy.querySelector("img");
-    imagen.alt = `Plano medio de ${personaje.nombre} ${personaje.familia} en altísima calidad`
-    if (personaje.nombre.toLowerCase() === "bronn") {
-      imagen.src = "img/bronn.jpg";
-    } else if (personaje.nombre.toLowerCase() === "daenerys") {
-      imagen.src = "img/daenerys.jpg";
-    } else if (personaje.nombre.toLowerCase() === "jamie") {
-      imagen.src = "img/jamie.jpg";
-    } else if (personaje.nombre.toLowerCase() === "tyrion") {
-      imagen.src = "img/tyrion.jpg";
-    } else if (personaje.nombre.toLowerCase() === "joffrey") {
-      imagen.src = "img/joffrey.jpg";
-    } else {
-      imagen.src = "img/no-one.jpg";
-    }
+    imagen.alt = `Plano medio de ${personaje.nombre} ${personaje.familia} en altísima calidad`;
+    imagen.src = `img/${personaje.nombre.toLowerCase()}.jpg`;
 
-    /*   Nueva idea de como crear una lista para luego usar en cada tipo de personaje solo la info que nos interesa */
-    /*
-    const personajeNombre = personajeDummy.querySelector(".nombre");
-    const personajeEdad = personajeDummy.querySelector(".edad-x");
-    const personajeReinado = personajeDummy.querySelector(".anyo-reinado");
-    const personajeArma = personajeDummy.querySelector(".arma");
-    const personajeDestreza = personajeDummy.querySelector(".destreza");
-    const personajePeloteo = personajeDummy.querySelector(".peloteo");
-    const presonajeAsesoraA = personajeDummy.querySelector(".asesora");
-    const personajeSirveA = personajeDummy.querySelector(".sirve");
-    const personajeIcono = personajeDummy.querySelector(".emoji");
-    const personajeEstado = personajeDummy.querySelector(".icono-estado");
-    const iconoVivo = personajeDummy.querySelector(".icono-estado").firstChild.cloneNode(true);
-    const iconoMuerto = personajeDummy.querySelector(".icono-estado").lastChild.cloneNode(true);
-    */
 
-    personajeDummy.querySelector(".emoji").textContent = chequeaIcono();
-    function chequeaIcono() {
-      if (personaje instanceof Rey) {
-        return '👑';
-      } else if (personaje instanceof Luchador) {
-        return '🗡';
-      } else if (personaje instanceof Asesor) {
-        return '🎓';
-      } else if (personaje instanceof Escudero) {
-        return '🛡';
-      }
-    }
-
+    personajeDummy.querySelector(".emoji").textContent = personaje.icono;
     personajeDummy.querySelector(".nombre").textContent = `${personaje.nombre} ${personaje.familia}`;
     personajeDummy.querySelector(".edad-x").textContent = personaje.edad;
     personajeDummy.querySelector(".anyo-reinado").textContent = personaje.anyosReinando;
@@ -291,19 +256,7 @@ document.body.addEventListener("click", boton => {
         boton.target.closest(".container").nextElementSibling.classList.add("on");
         const imagen = boton.target.closest(".container").nextElementSibling.childNodes[3];
         imagen.alt = `Plano medio de ${personaje.nombre} ${personaje.familia} en altísima calidad`
-        if (personaje.nombre.toLowerCase() === "bronn") {
-          imagen.src = "img/bronn.jpg";
-        } else if (personaje.nombre.toLowerCase() === "daenerys") {
-          imagen.src = "img/daenerys.jpg";
-        } else if (personaje.nombre.toLowerCase() === "jamie") {
-          imagen.src = "img/jamie.jpg";
-        } else if (personaje.nombre.toLowerCase() === "tyrion") {
-          imagen.src = "img/tyrion.jpg";
-        } else if (personaje.nombre.toLowerCase() === "joffrey") {
-          imagen.src = "img/joffrey.jpg";
-        } else {
-          imagen.src = "img/no-one.jpg";
-        }
+        imagen.src = `img/${personaje.nombre.toLowerCase()}.jpg`;
       }
       setTimeout(() => {
         boton.target.closest(".container").nextElementSibling.classList.remove("on");
